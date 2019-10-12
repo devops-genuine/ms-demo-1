@@ -1,0 +1,17 @@
+spring.profiles.default: develop
+spring.application.name: ms-demo
+spring.cloud.vault:
+  host: localhost
+  port: 8200
+  scheme: https
+  authentication: KUBERNETES
+  kubernetes:
+    role: ms-demo-develop-read-only-role
+    kubernetes-path: kubernetes
+    service-account-token-file: /Users/s90621/Desktop/ms-demo/sa-token
+  kv:
+    enabled: true
+    backend: secret
+    profile-separator: '/'
+    application-name: ms-demo
+
