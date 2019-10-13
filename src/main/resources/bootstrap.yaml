@@ -1,19 +1,20 @@
 spring.profiles.default: develop
+spring.profiles.active: sit
 spring.application.name: ms-demo
 spring.cloud.vault:
   host: localhost
   port: 8200
   scheme: https
-  authentication: TOKEN
-  token: s.SrQGe8oK8V3Gcl7gN7eECn6Q
+  # authentication: TOKEN
+  # token: s.osZiF6vDYC7it38mLQRLn6Rl
+  authentication: KUBERNETES
+  kubernetes:
+    role: fasteasy-ms-demo-sit-role
+    kubernetes-path: kubernetes
+    service-account-token-file: /tmp/sa-token
   ssl:
     trust-store: classpath:server.truststore.jks
     trust-store-password: changeit
-  # authentication: KUBERNETES
-  # kubernetes:
-  #   role: ms-demo-develop-read-only-role
-  #   kubernetes-path: kubernetes
-  #   service-account-token-file: /tmp/sa-token
   kv:
     enabled: true
     backend: secret
